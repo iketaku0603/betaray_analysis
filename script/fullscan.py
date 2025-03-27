@@ -1,7 +1,7 @@
 import numpy as np
 import os
 from skimage.measure import label
-
+import matplotlib.pyplot as plt
 def cluster_frames_to_nested_structure(folder_path, start_num, end_num, threshold, min_cluster_size):
     frames = []
 
@@ -47,10 +47,10 @@ def cluster_frames_to_nested_structure(folder_path, start_num, end_num, threshol
 
 if __name__ == "__main__":
     folder = r"C:\Users\iketa\Experiment\betaray\betaray_analysis\data\beta500000ns150V"
-    threshold = 10
-    min_cluster_size = 5
-    start_event = 142
-    end_event = 142
+    threshold = 20
+    min_cluster_size = 10
+    start_event = 140
+    end_event = 199
 
     nested_cluster_data = cluster_frames_to_nested_structure(
         folder_path=folder,
@@ -65,3 +65,21 @@ if __name__ == "__main__":
         print(f"Frame {frame['frame_id']} - {frame['num_events']} clusters")
         for event in frame['events']:
             print(f"  Event {event['event_id']}: sum = {event['pixel_sum']:.2f}, pixels = {len(event['pixels'])}")
+
+
+
+# 全クラスタの pixel_sum をリストにまとめる
+all_sums = []
+for frame in nested_cluster_data:
+    for event in frame["events"]:
+        all_sums.append(event["pixel_sum"])
+
+# ヒストグラムを描画
+plt.figure(figsize=(8, 6))
+plt.hist(all_sums, bins=30, color='skyblue', edgecolor='black')
+plt.title("Bray energy spectrum")
+plt.xlabel("Pixel Sum Value")
+plt.ylabel("Number of Clusters")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
