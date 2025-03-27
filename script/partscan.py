@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage import label
 
-def visualize_clusters_in_red_filtered(filename, threshold=1, min_cluster_size=2):
+def visualize_clusters_in_red_filtered(filename, threshold=10, min_cluster_size=2):
     data = np.loadtxt(filename, delimiter=",")
     binary_image = data >= threshold
     structure = np.ones((3, 3), dtype=int)
@@ -38,5 +38,5 @@ def visualize_clusters_in_red_filtered(filename, threshold=1, min_cluster_size=2
     plt.show()
 
 
-filename = r"C:\Users\iketa\Experiment\betaray\betaray_analysis\data\beta500000ns150V\csvdata_event142.csv"
-visualize_clusters_in_red_filtered(filename, threshold=10, min_cluster_size=5)
+filename = r"C:\Users\iketa\Experiment\betaray\betaray_analysis\data\beta500000ns150V\csvdata_event143.csv"
+visualize_clusters_in_red_filtered(filename, threshold=20, min_cluster_size=4)
