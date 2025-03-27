@@ -9,7 +9,7 @@ test_arr = np.array([
 ], dtype=int)
 
 # 5x5 の構造体
-structure_5x5 = np.ones((5,5), dtype=int)
+structure_5x5 = np.ones((3,3), dtype=int)
 
 print("test_arr shape =", test_arr.shape)
 print("structure shape =", structure_5x5.shape)

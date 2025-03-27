@@ -38,5 +38,5 @@ def visualize_clusters_in_red_filtered(filename, threshold=1, min_cluster_size=2
     plt.show()
 
 
-filename = r"C:\Users\iketa\Experiment\test_beta\data\beta500000ns150V\csvdata_event142.csv"
+filename = r"C:\Users\iketa\Experiment\betaray\betaray_analysis\data\beta500000ns150V\csvdata_event142.csv"
 visualize_clusters_in_red_filtered(filename, threshold=10, min_cluster_size=5)
